@@ -21,9 +21,7 @@ export const searchMovies = async page => {
     store.state.message = ''
   }
   try {
-      // test key = https://omdbapi.com?apikey=7035c60c&s=${store.state.searchText}&page=${page}
-      // 8efdac5
-      const res = await fetch('https://omdbapi.com?apikey=8efdac5&s=${store.state.searchText}&page=${page}', {
+      const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
         title: store.state.searchText,
@@ -50,7 +48,7 @@ export const searchMovies = async page => {
 
 export const getMovieDetails = async id => {
   try {
-    const res = await fetch('https://omdbapi.com?apikey=${APIKEY}&i=${id}&plot=full', {
+    const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
         id

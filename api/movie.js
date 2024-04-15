@@ -1,3 +1,4 @@
+// npm i node-fetch@2
 import fetch from 'node-fetch'
 
 const { APIKEY } = process.env

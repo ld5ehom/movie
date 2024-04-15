@@ -5,10 +5,29 @@ $ npm i
 $ npm run vercel
 ```
 
+
+## Vercel Hosting
+`node-fetch` 패키지는 꼭 2버전으로 설치
+
+```
+$ npm i -D vercel dotenv
+$ npm i node-fetch@2
+```
+
+
 ### Website Build (Developer)
 ```
 $ npm run dev
 ```
+
+
+### Vercel 개발 서버 실행
+Vercel 구성 이후에는 `npm run dev`가 아닌 `npm run vercel`로 개발 서버를 실행
+
+```
+$ npm run vercel
+```
+
 
 ### Reset.css
 reset-css cdn  JSDELIVR
@@ -22,13 +41,6 @@ reset-css cdn  JSDELIVR
 [Roboto](https://fonts.google.com/specimen/Roboto?query=robo) 
 
 
-## Vercel Hosting
-`node-fetch` 패키지는 꼭 2버전으로 설치
-
-```
-$ npm i -D vercel dotenv
-$ npm i node-fetch@2
-```
 
 __/vercel.json__
 
@@ -49,13 +61,6 @@ __/package.json__
 }
 ```
 
-### Vercel 개발 서버 실행
-
-Vercel 구성 이후에는 `npm run dev`가 아닌 `npm run vercel`로 개발 서버를 실행
-
-```
-$ npm run vercel
-```
 
 ## Vercel Serverless Functions
 
