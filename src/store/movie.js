@@ -21,6 +21,7 @@ export const searchMovies = async page => {
     store.state.message = ''
   }
   try {
+      //movie API
       const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
@@ -48,6 +49,7 @@ export const searchMovies = async page => {
 
 export const getMovieDetails = async id => {
   try {
+      // movie API
     const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
