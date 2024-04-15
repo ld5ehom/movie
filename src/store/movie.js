@@ -1,0 +1,63 @@
+import { Store } from '../core/core'
+
+//https://www.omdbapi.com/
+
+const store = new Store({
+  searchText: '',
+  page: 1,
+  pageMax: 1,
+  movies: [],
+  movie: {},
+  loading: false,
+  message: 'Search for the movie title!'
+})
+
+export default store
+export const searchMovies = async page => {
+  store.state.loading = true
+  store.state.page = page
+  if (page === 1) {
+    store.state.movies = []
+    store.state.message = ''
+  }
+  try {
+      // test key = https://omdbapi.com?apikey=7035c60c&s=${store.state.searchText}&page=${page}
+      // 8efdac5
+      const res = await fetch('https://omdbapi.com?apikey=8efdac5&s=${store.state.searchText}&page=${page}', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: store.state.searchText,
+        page
+      })
+    })
+    const { Response, Search, totalResults, Error } = await res.json()
+    if (Response === 'True') {
+      store.state.movies = [
+        ...store.state.movies,
+        ...Search
+      ]
+      store.state.pageMax = Math.ceil(Number(totalResults) / 10)
+    } else {
+      store.state.message = Error
+      store.state.pageMax = 1
+    }
+  } catch (error) {
+    console.log('searchMovies error:', error)
+  } finally {
+    store.state.loading = false
+  }
+}
+
+export const getMovieDetails = async id => {
+  try {
+    const res = await fetch('https://omdbapi.com?apikey=${APIKEY}&i=${id}&plot=full', {
+      method: 'POST',
+      body: JSON.stringify({
+        id
+      })
+    })
+    store.state.movie = await res.json()
+  } catch (error) {
+    console.log('getMovieDetails error:', error)
+  }
+}
