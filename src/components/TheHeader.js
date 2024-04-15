@@ -1,7 +1,6 @@
 import { Component } from '../core/core'
 
 // Navbar
-
 export default class TheHeader extends Component {
   constructor() {
     super({
