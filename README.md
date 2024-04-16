@@ -8,7 +8,7 @@ $ npm run vercel
 
 
 ## Vercel Hosting
-`node-fetch` 패키지는 꼭 2버전으로 설치
+`node-fetch` -Version 2 
 
 ```
 $ npm i -D vercel dotenv
@@ -23,7 +23,7 @@ $ npm run dev
 
 
 ### Vercel 개발 서버 실행
-Vercel 구성 이후에는 `npm run dev`가 아닌 `npm run vercel`로 개발 서버를 실행
+After configuring Vercel, run `npm run vercel`, Not `npm run dev`
 
 ```
 $ npm run vercel
@@ -64,9 +64,8 @@ __/package.json__
 
 
 ## Vercel Serverless Functions
-
-프로젝트 루트 경로에 `/api` 폴더를 생성하고,   
-API Key 를 노출하지 않도록 서버리스 함수를 작성
+Create a `/api` folder in the project root path,
+Write a serverless function so as not to expose the API Key
 
 __/api/movie.js__
 
@@ -89,13 +88,12 @@ export default async function handler(request, response) {
 ```
 
 ### 환경변수
-로컬의 개발용 서버에서 사용할 환경변수를 `.env` 파일에 지정
+Specify environment variables to be used on the local development server in the `.env` file.
 
 __/.env__
 
 ```dotenv
 APIKEY=<MY_OMDb_API_KEY>
 ```
-
-제품 서버(Vercel 서비스)에서 사용할 환경변수를 지정
-Vercel 서비스의 프로젝트 __'Settings / Environment Variables'__ 옵션에서 다음과 같이 환경변수를 지정
+Specify environment variables to be used on the product server (Vercel service)
+ __'Settings / Environment Variables'__ 
